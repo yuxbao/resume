@@ -112,7 +112,7 @@ async function getBrowserConfig() {
 }
 
 async function buildHTML() {
-  await fs.ensureDir("./dist");
+  await fs.remove("./dist");
 
   let resume;
   if (fs.existsSync("./resume.json")) {

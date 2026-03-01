@@ -136,7 +136,9 @@
                   {{#if resume.education.relevant_courses}}
                     <div class="space-top labels">
                       <strong>Relevant Courses:</strong>
-                      {{#each resume.education.relevant_courses}}{{this}}{{#unless @last}}, {{/unless}}{{/each}}
+                      {{#each
+                        resume.education.relevant_courses
+                      }}{{this}}{{#unless @last}}, {{/unless}}{{/each}}
                     </div>
                   {{/if}}
 
@@ -315,7 +317,7 @@
                 </a>
                 <span class="footer-divider">|</span>
                 <a
-                  href="resume-zh.pdf"
+                  href="https://yux-bao.site/resume-zh.pdf"
                   class="info"
                   itemprop="pdf"
                   target="_blank"
