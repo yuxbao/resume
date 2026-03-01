@@ -6,6 +6,7 @@ const puppeteerCore = require("puppeteer-core");
 const chromium = require("@sparticuz/chromium");
 
 const gist = "yuxbao/50e74b48f2bc188fe549a2aef7ba82ce";
+const outputDir = "./dist";
 
 function isVercelBuild() {
   return process.env.VERCEL === "1";
@@ -112,7 +113,8 @@ async function getBrowserConfig() {
 }
 
 async function buildHTML() {
-  await fs.remove("./dist");
+  await fs.remove(outputDir);
+  await fs.ensureDir(outputDir);
 
   let resume;
   if (fs.existsSync("./resume.json")) {
@@ -128,7 +130,7 @@ async function buildHTML() {
   console.log("Rendering...");
   const html = await require("./index.js").render(resume);
   console.log("Saving file...");
-  fs.writeFileSync("./dist/index.html", html, "utf-8");
+  fs.writeFileSync(`${outputDir}/index.html`, html, "utf-8");
   console.log("Done");
   return html;
 }
@@ -154,7 +156,8 @@ async function buildPDF(html) {
   });
   await browser.close();
   console.log("Saving file...");
-  fs.writeFileSync("./dist/resume.pdf", pdf);
+  await fs.ensureDir(outputDir);
+  fs.writeFileSync(`${outputDir}/resume.pdf`, pdf);
   console.log("Done");
   return pdf;
 }
