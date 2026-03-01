@@ -136,9 +136,7 @@
                   {{#if resume.education.relevant_courses}}
                     <div class="space-top labels">
                       <strong>Relevant Courses:</strong>
-                      {{#each resume.education.relevant_courses}}
-                        <span class="label label-keyword">{{this}}</span>
-                      {{/each}}
+                      {{#each resume.education.relevant_courses}}{{this}}{{#unless @last}}, {{/unless}}{{/each}}
                     </div>
                   {{/if}}
 
@@ -171,7 +169,9 @@
                             <p class="clear-margin-sm">
                               <strong>{{company}}</strong>
                             </p>
-                            <p class="text-muted clear-margin-sm entry-subtitle">
+                            <p
+                              class="text-muted clear-margin-sm entry-subtitle"
+                            >
                               {{role}}
                             </p>
                           </div>
@@ -306,7 +306,7 @@
             <div class="resume-footer">
               <div class="detail no-print footer-links">
                 <a
-                  href="https://resume.yux-bao.site/resume.pdf"
+                  href="resume.pdf"
                   class="info"
                   itemprop="pdf"
                   target="_blank"
@@ -315,7 +315,7 @@
                 </a>
                 <span class="footer-divider">|</span>
                 <a
-                  href="https://resume.yux-bao.site/resume-zh.pdf"
+                  href="resume-zh.pdf"
                   class="info"
                   itemprop="pdf"
                   target="_blank"
@@ -333,8 +333,7 @@
                   Online Version
                 </a>
               </div>
-              <div class="footer-updated">Last
-                updated at
+              <div class="footer-updated">Last updated at
                 {{getBuildDate ""}}</div>
             </div>
           </div>

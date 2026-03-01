@@ -112,7 +112,6 @@ async function getBrowserConfig() {
 }
 
 async function buildHTML() {
-  await fs.remove("./dist");
   await fs.ensureDir("./dist");
 
   let resume;
