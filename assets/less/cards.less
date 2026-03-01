@@ -14,6 +14,8 @@
 }
 
 .contact-details {
+  overflow-wrap: anywhere;
+
   .detail {
     display: block;
     line-height: 2;
@@ -27,6 +29,24 @@
       font-size: 0.8em;
     }
   }
+}
+
+.contact-info-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.15rem 0.65rem;
+  margin-top: 10px;
+  font-size: 0.9em;
+
+  .detail {
+    line-height: 1.4;
+  }
+}
+
+.separator-dot::before {
+  content: "|";
+  margin-right: 0.65rem;
+  color: #888;
 }
 
 .social-links {
@@ -90,15 +110,19 @@ a {
 
 .content {
   line-height: 1.5;
+  min-width: 0;
 }
 
 .card {
   background: @card-bg;
   padding: 2em 3.5em;
+  min-width: 0;
 }
 
 .card-nested {
   padding: 0.8rem 0 0.8rem 2rem;
+  page-break-inside: avoid;
+  break-inside: avoid;
 
   &.relax {
     padding-top: 1.5rem;
@@ -124,6 +148,7 @@ a {
 
 .projects {
   padding: 1rem 0;
+
   .text-muted {
     margin-bottom: 0.4rem;
   }
@@ -138,12 +163,19 @@ a {
 
 .skill-table {
   display: grid;
-  grid-template-columns: max-content auto;
+  grid-template-columns: 8.5rem minmax(0, 1fr);
   grid-gap: 1.5rem 1rem;
+  align-items: start;
 
   .name {
     font-weight: bold;
     text-align: right;
+    line-height: 1.5;
+  }
+
+  .skill-value {
+    min-width: 0;
+    overflow-wrap: anywhere;
   }
 }
 
@@ -157,6 +189,73 @@ a {
   display: none;
 }
 
+.entry-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem 1.5rem;
+}
+
+.entry-heading-main {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.entry-heading-side {
+  flex: 0 0 auto;
+  white-space: nowrap;
+  text-align: right;
+}
+
+.entry-subtitle {
+  margin-top: 0.15rem;
+}
+
+.project-stack {
+  margin-top: 0.35rem;
+}
+
+.subsection-block {
+  margin-top: 10px;
+}
+
+.highlight {
+  margin-top: 0.55rem;
+  margin-bottom: 0;
+
+  li + li {
+    margin-top: 0.25rem;
+  }
+}
+
+.skill-list {
+  margin: 0;
+  padding-left: 1.15rem;
+
+  li + li {
+    margin-top: 0.2rem;
+  }
+}
+
+.resume-footer {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.footer-links {
+  font-size: 1.5rem;
+}
+
+.footer-divider {
+  margin: 0 0.5rem;
+}
+
+.footer-updated {
+  opacity: 0.7;
+  font-size: 1.2rem;
+  margin-top: 1rem;
+}
+
 @media only screen and (max-width: @screen-tablet) {
   .profile-card,
   .contact-details,
@@ -167,6 +266,42 @@ a {
   .card-nested {
     padding-left: 0;
   }
+
+  .contact-info-row {
+    justify-content: center;
+  }
+
+  .separator-dot::before {
+    content: "";
+    margin: 0;
+  }
+
+  .entry-heading {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.2rem;
+  }
+
+  .entry-heading-side {
+    white-space: normal;
+    text-align: left;
+  }
+
+  .skill-table {
+    grid-template-columns: 1fr;
+    grid-gap: 0.5rem;
+
+    .name {
+      text-align: left;
+      margin-top: 0.25rem;
+    }
+  }
+
+  .footer-links {
+    font-size: 1.2rem;
+    line-height: 1.8;
+  }
+
   .project-table {
     display: block;
   }

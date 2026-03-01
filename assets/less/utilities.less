@@ -24,12 +24,20 @@
 }
 
 .label-keyword {
-    display: inline-block;
-    background: @theme-label-bg;
-    color: white;
-    font-size: 0.9em;
-    padding: 5px;
-    border: 1px solid @theme-label-border-color;
+    display: inline;
+    background: transparent;
+    color: inherit;
+    font-size: inherit;
+    font-weight: 400;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+.label-keyword + .label-keyword:before {
+    content: " / ";
+    color: #888;
 }
 
 .link-disguise {
