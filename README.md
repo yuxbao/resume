@@ -18,11 +18,11 @@ The theme is heavy modified from [jsonresume-theme-kwan](https://github.com/icol
 
 ## Vercel notes
 
-- PDF generation uses Puppeteer's Chrome for Testing during the build step.
-- `build.js` resolves Chrome from `PUPPETEER_EXECUTABLE_PATH`, `CHROME_BIN`, `GOOGLE_CHROME_BIN`, Puppeteer's bundled browser, then common system paths.
-- `pnpm build` explicitly runs `node ./scripts/ensure-chrome.js` before generating the PDF, so Vercel does not depend on Puppeteer's install hook having already downloaded Chrome.
+- Local PDF generation uses Puppeteer's Chrome for Testing.
+- Vercel builds use `puppeteer-core` with `@sparticuz/chromium`, which avoids the missing shared-library errors that often happen when launching standard Chrome for Testing in serverless Linux environments.
+- `build.js` switches launch strategy automatically: Vercel uses serverless Chromium, local builds resolve Chrome from environment variables, Puppeteer's bundled browser, then common system paths.
 - Puppeteer's cache is pinned to `./.cache/puppeteer` via `.puppeteerrc.cjs`, which avoids the default `~/.cache/puppeteer` path that can be fragile in CI/build images.
-- If Chrome is still missing, `build.js` also retries by running `puppeteer browsers install chrome`.
+- `pnpm run install:chrome` remains available for local setup if you want to pre-install Puppeteer's bundled browser.
 - Do not set `PUPPETEER_SKIP_DOWNLOAD=true` in Vercel unless you also provide a valid Chrome executable path.
 
 > Note: I did a lot quick hacks to make it suitable for my design, which may not be good to be general used as a theme. While I may not have time to improve it, PRs are great welcome!

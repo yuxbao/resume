@@ -2,8 +2,14 @@ const fs = require("fs-extra");
 const axios = require("axios");
 const { execFileSync } = require("child_process");
 const puppeteer = require("puppeteer");
+const puppeteerCore = require("puppeteer-core");
+const chromium = require("@sparticuz/chromium");
 
 const gist = "yuxbao/50e74b48f2bc188fe549a2aef7ba82ce";
+
+function isVercelBuild() {
+  return process.env.VERCEL === "1";
+}
 
 function safeExecutablePath() {
   try {
@@ -81,6 +87,30 @@ function getLaunchOptions() {
   return options;
 }
 
+async function getBrowserConfig() {
+  if (isVercelBuild()) {
+    chromium.setGraphicsMode = false;
+
+    return {
+      launcher: puppeteerCore,
+      launchOptions: {
+        args: puppeteerCore.defaultArgs({
+          args: chromium.args,
+          headless: "shell",
+        }),
+        defaultViewport: chromium.defaultViewport,
+        executablePath: await chromium.executablePath(),
+        headless: "shell",
+      },
+    };
+  }
+
+  return {
+    launcher: puppeteer,
+    launchOptions: getLaunchOptions(),
+  };
+}
+
 async function buildHTML() {
   await fs.remove("./dist");
   await fs.ensureDir("./dist");
@@ -106,7 +136,9 @@ async function buildHTML() {
 
 async function buildPDF(html) {
   console.log("Opening puppeteer...");
-  const browser = await puppeteer.launch(getLaunchOptions());
+  const { launcher, launchOptions } = await getBrowserConfig();
+  console.log(`Launch mode: ${isVercelBuild() ? "vercel-chromium" : "local-chrome"}`);
+  const browser = await launcher.launch(launchOptions);
   const page = await browser.newPage();
   await page.setContent(html, { waitUntil: "networkidle0" });
   console.log("Generating PDF...");
