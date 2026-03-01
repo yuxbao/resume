@@ -10,6 +10,12 @@ The theme is heavy modified from [jsonresume-theme-kwan](https://github.com/icol
 - The website is hosted by [Netlify](http://netlify.com/) with CI/CD.
 - HTML is generated with [Handlebars](https://handlebarsjs.com/) and PDF is printed with [puppeteer](https://github.com/puppeteer/puppeteer/).
 
+## Local usage
+
+- `pnpm build` generates `dist/index.html` and `dist/resume.pdf`.
+- `pnpm preview` serves `resume.json` locally at `http://localhost:8888/`.
+- `pnpm dev` runs the Less watcher and local preview server together.
+
 > Note: I did a lot quick hacks to make it suitable for my design, which may not be good to be general used as a theme. While I may not have time to improve it, PRs are great welcome!
 
 ## License
