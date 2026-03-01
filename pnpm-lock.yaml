@@ -20,6 +20,9 @@ importers:
       optimist:
         specifier: ^0.6.1
         version: 0.6.1
+      puppeteer-core:
+        specifier: 24.37.5
+        version: 24.37.5
       resume-schema:
         specifier: 1.0.0
         version: 1.0.0

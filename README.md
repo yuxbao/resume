@@ -16,6 +16,15 @@ The theme is heavy modified from [jsonresume-theme-kwan](https://github.com/icol
 - `pnpm preview` serves `resume.json` locally at `http://localhost:8888/`.
 - `pnpm dev` runs the Less watcher and local preview server together.
 
+## Vercel notes
+
+- PDF generation uses Puppeteer's Chrome for Testing during the build step.
+- `build.js` resolves Chrome from `PUPPETEER_EXECUTABLE_PATH`, `CHROME_BIN`, `GOOGLE_CHROME_BIN`, Puppeteer's bundled browser, then common system paths.
+- `pnpm build` explicitly runs `node ./scripts/ensure-chrome.js` before generating the PDF, so Vercel does not depend on Puppeteer's install hook having already downloaded Chrome.
+- Puppeteer's cache is pinned to `./.cache/puppeteer` via `.puppeteerrc.cjs`, which avoids the default `~/.cache/puppeteer` path that can be fragile in CI/build images.
+- If Chrome is still missing, `build.js` also retries by running `puppeteer browsers install chrome`.
+- Do not set `PUPPETEER_SKIP_DOWNLOAD=true` in Vercel unless you also provide a valid Chrome executable path.
+
 > Note: I did a lot quick hacks to make it suitable for my design, which may not be good to be general used as a theme. While I may not have time to improve it, PRs are great welcome!
 
 ## License

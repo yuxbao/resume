@@ -5,3 +5,6 @@ dist
 .DS_Store
 assets/css
 resume.json
+.vercel
+.cache
+.env*.local

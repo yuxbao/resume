@@ -1,8 +1,85 @@
 const fs = require("fs-extra");
 const axios = require("axios");
+const { execFileSync } = require("child_process");
 const puppeteer = require("puppeteer");
 
 const gist = "yuxbao/50e74b48f2bc188fe549a2aef7ba82ce";
+
+function safeExecutablePath() {
+  try {
+    return puppeteer.executablePath();
+  } catch (error) {
+    return null;
+  }
+}
+
+function getChromeCandidates() {
+  return [
+    process.env.PUPPETEER_EXECUTABLE_PATH,
+    process.env.CHROME_BIN,
+    process.env.GOOGLE_CHROME_BIN,
+    safeExecutablePath(),
+    process.platform === "darwin"
+      ? "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+      : null,
+    process.platform === "darwin"
+      ? "/Applications/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing"
+      : null,
+    process.platform === "linux" ? "/usr/bin/google-chrome-stable" : null,
+    process.platform === "linux" ? "/usr/bin/google-chrome" : null,
+    process.platform === "linux" ? "/usr/bin/chromium-browser" : null,
+    process.platform === "linux" ? "/usr/bin/chromium" : null,
+  ].filter(Boolean);
+}
+
+function findChromeExecutable() {
+  return getChromeCandidates().find((candidate) => fs.existsSync(candidate));
+}
+
+function installBundledChrome() {
+  const cliPath = require.resolve("puppeteer/lib/cjs/puppeteer/node/cli.js");
+  console.log("Chrome executable not found, installing Puppeteer's bundled Chrome...");
+  execFileSync(process.execPath, [cliPath, "browsers", "install", "chrome"], {
+    stdio: "inherit",
+    env: process.env,
+  });
+}
+
+function resolveChromeExecutable() {
+  let executablePath = findChromeExecutable();
+
+  if (!executablePath) {
+    installBundledChrome();
+    executablePath = findChromeExecutable();
+  }
+
+  if (!executablePath) {
+    throw new Error(
+      "Could not locate a Chrome executable for Puppeteer. " +
+        "On Vercel, keep install scripts enabled and do not set PUPPETEER_SKIP_DOWNLOAD=true.",
+    );
+  }
+
+  console.log(`Using Chrome executable: ${executablePath}`);
+  return executablePath;
+}
+
+function getLaunchOptions() {
+  const options = {
+    headless: true,
+    executablePath: resolveChromeExecutable(),
+  };
+
+  if (process.platform === "linux") {
+    options.args = [
+      "--no-sandbox",
+      "--disable-setuid-sandbox",
+      "--disable-dev-shm-usage",
+    ];
+  }
+
+  return options;
+}
 
 async function buildHTML() {
   await fs.remove("./dist");
@@ -28,9 +105,9 @@ async function buildHTML() {
 }
 
 async function buildPDF(html) {
-  const browser = await puppeteer.launch({ headless: true });
-  const page = await browser.newPage();
   console.log("Opening puppeteer...");
+  const browser = await puppeteer.launch(getLaunchOptions());
+  const page = await browser.newPage();
   await page.setContent(html, { waitUntil: "networkidle0" });
   console.log("Generating PDF...");
   const pdf = await page.pdf({

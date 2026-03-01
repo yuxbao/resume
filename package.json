@@ -3,7 +3,8 @@
   "private": true,
   "scripts": {
     "dev": "concurrently \"npx grunt watch\" \"npx grunt && node ./serve.js ./resume.json\"",
-    "build": "grunt less && node ./build.js",
+    "install:chrome": "node ./scripts/ensure-chrome.js",
+    "build": "pnpm run install:chrome && grunt less && node ./build.js",
     "preview": "node ./serve.js ./resume.json"
   },
   "dependencies": {
@@ -11,6 +12,7 @@
     "handlebars": "^4.7.7",
     "moment": "^2.29.4",
     "optimist": "^0.6.1",
+    "puppeteer-core": "24.37.5",
     "resume-schema": "1.0.0",
     "tarball-extract": "0.0.6",
     "underscore": "^1.13.4"
