@@ -237,6 +237,27 @@ a {
   }
 }
 
+.education-entry {
+  .education-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .school-logo {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    flex-shrink: 0;
+    border-radius: 4px;
+  }
+
+  .education-title {
+    flex: 1;
+    min-width: 0;
+  }
+}
+
 .resume-footer {
   margin-top: 2rem;
   text-align: center;
@@ -304,5 +325,16 @@ a {
 
   .project-table {
     display: block;
+  }
+
+  .education-entry {
+    .school-logo {
+      width: 32px;
+      height: 32px;
+    }
+
+    .education-header {
+      gap: 0.5rem;
+    }
   }
 }

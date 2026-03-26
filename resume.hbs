@@ -120,23 +120,29 @@
             {{#if resume.education}}
               <h4 id="education"><span class="title">Education</span></h4>
               {{#each resume.education}}
-                <div class="card-nested" itemprop="description">
+                <div class="card-nested education-entry" itemprop="description">
                   <div class="content has-sidebar">
                     <div class="entry-heading">
-                      <p class="clear-margin-sm entry-heading-main">
-                        <strong>{{degree}}</strong>
-                        in
-                        <strong>{{major}}</strong>
-                        {{#if incoming}}<em>(Incoming)</em>{{/if}}
-                      </p>
+                      <div class="entry-heading-main">
+                        <div class="education-header">
+                          {{#if logo}}
+                            <img src="{{logo}}" alt="{{institution}}" class="school-logo" />
+                          {{/if}}
+                          <div class="education-title">
+                            <p class="clear-margin-sm entry-heading-main">
+                              <strong>{{degree}}</strong> in <strong>{{major}}</strong>
+                              {{#if incoming}}<em>(Incoming)</em>{{/if}}
+                            </p>
+                            <p class="text-muted clear-margin-sm">
+                              {{institution}} ({{ranking}})
+                            </p>
+                          </div>
+                        </div>
+                      </div>
                       <div class="entry-heading-side text-muted">
                         {{duration}}
                       </div>
                     </div>
-                    <p class="text-muted clear-margin-sm">
-                      {{institution}}
-                      ({{ranking}})
-                    </p>
 
                     {{#if relevant_courses}}
                       <div class="space-top labels">
