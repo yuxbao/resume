@@ -3,8 +3,12 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" href="https://antfu.me/favicon.svg" type="image/svg+xml" />
-    <link rel="icon" href="https://antfu.me/favicon.png" type="image/png" />
+    <link
+      rel="icon"
+      href="https://yux-bao.site/favicon.svg"
+      type="image/svg+xml"
+    />
+    <link rel="icon" href="https://yux-bao.site/favicon.png" type="image/png" />
     <title>{{#if resume.name}}{{resume.name}}{{else}}Résumé{{/if}}</title>
     <script src="https://code.iconify.design/1/1.0.6/iconify.min.js"></script>
     <link
@@ -115,45 +119,46 @@
             <!-- Education -->
             {{#if resume.education}}
               <h4 id="education"><span class="title">Education</span></h4>
-              <div class="card-nested" itemprop="description">
-                <div class="content has-sidebar">
-                  <div class="entry-heading">
-                    <p class="clear-margin-sm entry-heading-main">
-                      <strong>{{resume.education.degree}}</strong>
-                      in
-                      <strong>{{resume.education.major}}</strong>
+              {{#each resume.education}}
+                <div class="card-nested" itemprop="description">
+                  <div class="content has-sidebar">
+                    <div class="entry-heading">
+                      <p class="clear-margin-sm entry-heading-main">
+                        <strong>{{degree}}</strong>
+                        in
+                        <strong>{{major}}</strong>
+                        {{#if incoming}}<em>(Incoming)</em>{{/if}}
+                      </p>
+                      <div class="entry-heading-side text-muted">
+                        {{duration}}
+                      </div>
+                    </div>
+                    <p class="text-muted clear-margin-sm">
+                      {{institution}}
+                      ({{ranking}})
                     </p>
-                    <div class="entry-heading-side text-muted">
-                      {{resume.education.duration}}
-                    </div>
+
+                    {{#if relevant_courses}}
+                      <div class="space-top labels">
+                        <strong>Relevant Courses:</strong>
+                        {{#each relevant_courses}}{{this}}{{#unless @last}},
+                          {{/unless}}{{/each}}
+                      </div>
+                    {{/if}}
+
+                    {{#if achievements}}
+                      <div class="subsection-block">
+                        <strong>Achievements:</strong>
+                        <ul class="highlight">
+                          {{#each achievements}}
+                            <li>{{name}} - {{award}} ({{year}})</li>
+                          {{/each}}
+                        </ul>
+                      </div>
+                    {{/if}}
                   </div>
-                  <p class="text-muted clear-margin-sm">
-                    {{resume.education.institution}}
-                    (Ranking:
-                    {{resume.education.ranking}})
-                  </p>
-
-                  {{#if resume.education.relevant_courses}}
-                    <div class="space-top labels">
-                      <strong>Relevant Courses:</strong>
-                      {{#each
-                        resume.education.relevant_courses
-                      }}{{this}}{{#unless @last}}, {{/unless}}{{/each}}
-                    </div>
-                  {{/if}}
-
-                  {{#if resume.education.achievements}}
-                    <div class="subsection-block">
-                      <strong>Achievements:</strong>
-                      <ul class="highlight">
-                        {{#each resume.education.achievements}}
-                          <li>{{name}} - {{award}} ({{year}})</li>
-                        {{/each}}
-                      </ul>
-                    </div>
-                  {{/if}}
                 </div>
-              </div>
+              {{/each}}
             {{/if}}
 
             <div class="px10"></div>
