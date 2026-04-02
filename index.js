@@ -100,11 +100,23 @@ async function getRepoStars(url) {
 }
 
 async function render(resume) {
+  function normalizeEducation(education) {
+    if (Array.isArray(education)) {
+      return education;
+    }
+
+    if (education && typeof education === "object") {
+      return [education];
+    }
+
+    return [];
+  }
+
   // Ensure resume.basics exists and initialize arrays to prevent crashes
   resume.basics = resume.basics || {};
   resume.basics.profiles = resume.basics.profiles || [];
   resume.work = resume.work || [];
-  resume.education = resume.education || [];
+  resume.education = normalizeEducation(resume.education);
   resume.awards = resume.awards || [];
   resume.publications = resume.publications || [];
   resume.volunteer = resume.volunteer || [];

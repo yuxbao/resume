@@ -2,10 +2,10 @@
   "name": "@antfu/resume",
   "private": true,
   "scripts": {
-    "dev": "concurrently \"npx grunt watch\" \"npx grunt && node ./serve.js ./resume.json\"",
+    "dev": "concurrently \"npx grunt watch\" \"npx grunt && node ./serve.js\"",
     "install:chrome": "node ./scripts/ensure-chrome.js",
     "build": "grunt less && node ./build.js",
-    "preview": "node ./serve.js ./resume.json"
+    "preview": "node ./serve.js"
   },
   "dependencies": {
     "@sparticuz/chromium": "143.0.4",

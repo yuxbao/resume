@@ -1,0 +1,154 @@
+{
+  "name": "Bao Yuxiang",
+  "title": "Backend Development Intern",
+  "personal_info": {
+    "gender": "Male",
+    "age": 22,
+    "phone": "187-0210-6887",
+    "email": "yux-bao@outlook.com",
+    "personal_blog": "https://yux-bao.site",
+    "wechat": "yux_bao"
+  },
+  "education": [
+    {
+      "institution": "The University of Hong Kong",
+      "degree": "Master's Degree",
+      "major": "Computer Science",
+      "ranking": "QS Top 20",
+      "duration": "2026.9 - 2027.6",
+      "incoming": true,
+      "logo": "https://www.hku.hk/assets/img/favicon.ico"
+    },
+    {
+      "institution": "Shanghai University",
+      "degree": "Bachelor's Degree",
+      "major": "Computer Science and Technology",
+      "ranking": "211",
+      "duration": "2022.9 - 2026.7",
+      "logo": "https://www.shu.edu.cn/images/logobox.png",
+      "relevant_courses": [
+        "Data Structures and Algorithms",
+        "Operating Systems",
+        "Computer Networks",
+        "Database Systems",
+        "Compiler Principles"
+      ],
+      "achievements": [
+        {
+          "name": "Lanqiao Cup National Software and Information Technology Professional Talent Competition",
+          "award": "Provincial Third Prize",
+          "year": 2024
+        },
+        {
+          "name": "National College Student Computer Design Competition",
+          "award": "National Second Prize",
+          "year": 2025
+        }
+      ]
+    }
+  ],
+  "intern_experience": [
+    {
+      "company": "Foodism",
+      "role": "AI Agent Full-stack Intern",
+      "duration": "2026.03 - Present",
+      "tasks": [
+        "Participated in AI Agent system development for Foodism's overseas startup product using NotebookLM, LiteLLM, and Claude Agent SDK.",
+        "Completed sub-agent and Skill integration, achieving iterative task execution, deep reasoning, and context persistence.",
+        "Responsible for Foodism-core frontend and backend development, supporting file synchronization, automatic Agent loading, and skill deployment.",
+        "Obtained business district data through Google Map MCP and Firecrawl, providing data support for global store location selection and business decisions."
+      ]
+    },
+    {
+      "company": "Shanghai Huantong Business Technology Co., Ltd.",
+      "role": "Backend Development Intern",
+      "duration": "2025.06 - 2025.09",
+      "tasks": [
+        "Participated in the PharmDataLink pharmaceutical factory data extraction project, interfaced with pharmaceutical enterprise ERPs based on Spring Boot + WebService / REST clients.",
+        "Cleaned and processed millions of supply chain data based on the SPI (Sales/Purchase/Inventory) model.",
+        "Optimized query paths with Elasticsearch, reducing report query time from minutes to 10s, supporting one-click export to Excel / CSV reports.",
+        "Encapsulated API call chains for Beisen / WeCom based on BaseCallApiService for periodic incremental synchronization of employee records, attendance, overtime.",
+        "Designed and implemented SQLite log tables with daily/type-based query interfaces, supporting exception recovery and audit trail.",
+        "Introduced observability solution of Spring Boot Actuator + Micrometer + Prometheus + Grafana, exposing key interface latency and success rate metrics as monitoring indicators visualized as Dashboard.",
+        "Migrated large file exports from XSSFWorkbook to SXSSFWorkbook with proper configuration, reducing JVM peak memory from nearly 60GB to about 4GB, solving OOM issues.",
+        "Collaborated closely with mentors and cross-functional teams (Beisen vendors, HR department, supply chain colleagues) in requirements grooming, interface and configuration design (Factory pattern / Configuration-driven)."
+      ]
+    },
+    {
+      "company": "Shanghai Moyuanfang Information Technology",
+      "role": "Software Development Intern",
+      "duration": "2024.06 - 2024.09",
+      "tasks": [
+        "Responsible for algorithm design and implementation for an industrial-grade AI-CAD tool.",
+        "Completed automatic coordinate conversion from 3D to 2D, and implemented automatic dimension layout for 6 technical views.",
+        "Developed a client update system based on MD5 verification and version control, implementing file change detection, batch replacement, real-time progress tracking, and UI integration."
+      ]
+    }
+  ],
+  "project_experience": [
+    {
+      "project_name": "Sixianghui - Knowledge Paradise Community",
+      "duration": "2025.06 - 2025.12",
+      "tech_stack": ["SpringBoot", "MySQL", "Redis", "RabbitMQ", "Nginx"],
+      "tasks": [
+        "Deployed to the public internet via Nginx+Docker+custom domain, configured HTTPS encryption certificates with Let's Encrypt.",
+        "Implemented WeChat Official Account + verification code one-click login combining SSEmitter+LoadingCache.",
+        "Used AOP aspect technology to automatically send messages to RabbitMQ and store them in Redis cache for user consumption.",
+        "Optimized homepage interface response time from 134ms to 80ms using CompletableFuture for parallel access.",
+        "Implemented user identity recognition using WebFilter and saved user information to ThreadLocal context, reducing database query times.",
+        "Implemented user activity and article popularity rankings using Redis zset, with idempotency to prevent duplicate activity additions, using Spring Event and Listener to trigger activity updates.",
+        "For article tags data allowing brief inconsistency, adopted Cache Aside + TTL expiration mechanism to ensure cache and MySQL data consistency, used Spring Cache and Redis cache to optimize loading speed, integrated Spring Email service for exception alerts."
+      ]
+    }
+  ],
+  "skills_and_certificates": {
+    "languages": [
+      {
+        "language": "English",
+        "proficiency": "CET6, IELTS 6.5",
+        "description": "Fluent in reading English technical documentation and conducting technical communication."
+      }
+    ],
+    "databases": [
+      {
+        "database": "MySQL",
+        "proficiency": "Proficient"
+      },
+      {
+        "database": "PostgreSQL",
+        "proficiency": "Familiar"
+      },
+      {
+        "database": "MongoDB",
+        "proficiency": "Familiar"
+      },
+      {
+        "database": "Sqlite",
+        "proficiency": "Familiar"
+      },
+      {
+        "database": "Redis",
+        "proficiency": "Familiar"
+      },
+      {
+        "database": "ElasticSearch",
+        "proficiency": "Familiar"
+      }
+    ],
+    "system_design_and_deployment": [
+      "Familiar with distributed system design principles like CAP theorem, BASE theory.",
+      "Understand common high-concurrency, high-availability architecture design methods.",
+      "Can use cloud platforms like Vercel, CloudFlare, Alibaba Cloud Console, Nginx for project deployment and release, configure SSL certificates and CDN caching policies.",
+      "Understand SEO process, familiar with TCP/IP, HTTPS protocol principles."
+    ],
+    "development_skills": [
+      "Familiar with Java fundamentals, IO, Collections Framework, Multithreading.",
+      "Can use common Golang frameworks like Gin, Gorm to build server-side programs, understand context, mutex, http and other common packages.",
+      "Possess certain frontend development capabilities, can use Vue.js framework, Vite and other tools to build frontend projects, understand Nuxt.js SSR framework, can read and modify frontend code, generate beautiful styles with AI."
+    ],
+    "others": [
+      "Understand common open-source contribution methods, proficient in using git, master code collaboration and commit conventions, GitHub star 50+.",
+      "Skilled in setting up personal blogs and writing technical research documentation."
+    ]
+  }
+}

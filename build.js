@@ -7,6 +7,7 @@ const chromium = require("@sparticuz/chromium");
 
 const gist = "yuxbao/50e74b48f2bc188fe549a2aef7ba82ce";
 const outputDir = "./dist";
+const localResumeCandidates = ["./resume.public.json", "./resume.json"];
 
 function isVercelBuild() {
   return process.env.VERCEL === "1";
@@ -117,9 +118,13 @@ async function buildHTML() {
   await fs.ensureDir(outputDir);
 
   let resume;
-  if (fs.existsSync("./resume.json")) {
-    console.log(`Loading from locale "resume.json"`);
-    resume = JSON.parse(fs.readFileSync("./resume.json", "utf-8"));
+  const localResumePath = localResumeCandidates.find((candidate) =>
+    fs.existsSync(candidate),
+  );
+
+  if (localResumePath) {
+    console.log(`Loading local resume from "${localResumePath}"`);
+    resume = JSON.parse(fs.readFileSync(localResumePath, "utf-8"));
   } else {
     console.log(`Downloading resume... [${gist}]`);
     const { data } = await axios.get(
