@@ -1,6 +1,6 @@
 {
   "name": "Bao Yuxiang",
-  "title": "Backend Development Intern",
+  "title": "AI Engineering Full-Stack Intern",
   "personal_info": {
     "gender": "Male",
     "age": 22,
@@ -49,14 +49,24 @@
   ],
   "intern_experience": [
     {
+      "company": "RBCN Bosch (China) Investment Co., Ltd. (Fortune Global 500)",
+      "role": "AI Engineering Full-Stack Intern",
+      "duration": "2026.05 - Present",
+      "tasks": [
+        "Designed and implemented a browser agent for SAP Web GUI financial testing using Browser-Use and Playwright, automating batch document queries, XOE/QPT cross-table validation, and exception-field identification across multiple business branches.",
+        "Built a CDD document-automation workflow that uses Azure LLMs to extract business fields from user-uploaded images and populate downstream steps, advancing multi-step workflow integration and end-to-end testing.",
+        "Enhanced the Ask Accounting RAG system with DOC/PPTX support and asynchronous Langfuse evaluations for accuracy, relevance, and faithfulness, weighted with user feedback.",
+        "Improved platform reliability by adding audit fields to Planning Board, scheduling PostgreSQL backups with pg_dump and cron, and evaluating OpenShift deployment and Uptime Kuma monitoring/alerting."
+      ]
+    },
+    {
       "company": "Foodism",
       "role": "AI Agent Full-stack Intern",
-      "duration": "2026.03 - Present",
+      "duration": "2026.01 - Present",
       "tasks": [
-        "Participated in AI Agent system development for Foodism's overseas startup product using NotebookLM, LiteLLM, and Claude Agent SDK.",
-        "Completed sub-agent and Skill integration, achieving iterative task execution, deep reasoning, and context persistence.",
-        "Responsible for Foodism-core frontend and backend development, supporting file synchronization, automatic Agent loading, and skill deployment.",
-        "Obtained business district data through Google Map MCP and Firecrawl, providing data support for global store location selection and business decisions."
+        "Developed multi-agent capabilities for an Australia-focused B2B restaurant product using Claude Agent SDK, LiteLLM, and NotebookLM, including sub-agent/skill integration, iterative execution, and persistent context.",
+        "Built full-stack features for foodism-agent-os and foodism-core, including Markdown-driven agent loading, automated skill deployment, file transfer, and deliverable workflows for an extensible agent runtime.",
+        "Designed an asynchronous sub-agent scheduler with a worker pool, runtime job queue, and deliverable state transitions, enabling real-time task status visibility and stronger traceability and fault tolerance."
       ]
     },
     {
@@ -64,14 +74,8 @@
       "role": "Backend Development Intern",
       "duration": "2025.06 - 2025.09",
       "tasks": [
-        "Participated in the PharmDataLink pharmaceutical factory data extraction project, interfaced with pharmaceutical enterprise ERPs based on Spring Boot + WebService / REST clients.",
-        "Cleaned and processed millions of supply chain data based on the SPI (Sales/Purchase/Inventory) model.",
-        "Optimized query paths with Elasticsearch, reducing report query time from minutes to 10s, supporting one-click export to Excel / CSV reports.",
-        "Encapsulated API call chains for Beisen / WeCom based on BaseCallApiService for periodic incremental synchronization of employee records, attendance, overtime.",
-        "Designed and implemented SQLite log tables with daily/type-based query interfaces, supporting exception recovery and audit trail.",
-        "Introduced observability solution of Spring Boot Actuator + Micrometer + Prometheus + Grafana, exposing key interface latency and success rate metrics as monitoring indicators visualized as Dashboard.",
-        "Migrated large file exports from XSSFWorkbook to SXSSFWorkbook with proper configuration, reducing JVM peak memory from nearly 60GB to about 4GB, solving OOM issues.",
-        "Collaborated closely with mentors and cross-functional teams (Beisen vendors, HR department, supply chain colleagues) in requirements grooming, interface and configuration design (Factory pattern / Configuration-driven)."
+        "Processed millions of supply-chain records across pharmaceutical ERPs for PharmDataLink; optimized Elasticsearch query paths to reduce sales-flow report latency from minutes to 10 seconds.",
+        "Built incremental HR data synchronization and audit logging for Beisen and WeCom, and deployed Prometheus/Grafana monitoring; migrated large exports to SXSSFWorkbook, reducing JVM peak memory from nearly 60 GB to about 4 GB."
       ]
     },
     {
@@ -79,9 +83,7 @@
       "role": "Software Development Intern",
       "duration": "2024.06 - 2024.09",
       "tasks": [
-        "Responsible for algorithm design and implementation for an industrial-grade AI-CAD tool.",
-        "Completed automatic coordinate conversion from 3D to 2D, and implemented automatic dimension layout for 6 technical views.",
-        "Developed a client update system based on MD5 verification and version control, implementing file change detection, batch replacement, real-time progress tracking, and UI integration."
+        "Developed 3D-to-2D coordinate conversion and automated dimension layout across six technical views for an industrial AI-CAD tool; implemented an MD5- and version-control-based client update system."
       ]
     }
   ],
@@ -136,19 +138,16 @@
       }
     ],
     "system_design_and_deployment": [
-      "Familiar with distributed system design principles like CAP theorem, BASE theory.",
-      "Understand common high-concurrency, high-availability architecture design methods.",
-      "Can use cloud platforms like Vercel, CloudFlare, Alibaba Cloud Console, Nginx for project deployment and release, configure SSL certificates and CDN caching policies.",
-      "Understand SEO process, familiar with TCP/IP, HTTPS protocol principles."
+      "Familiar with OpenShift, Prometheus, Grafana, and Uptime Kuma; hands-on experience in service deployment, database backup, monitoring, alerting, and issue diagnosis."
     ],
     "development_skills": [
-      "Familiar with Java fundamentals, IO, Collections Framework, Multithreading.",
-      "Can use common Golang frameworks like Gin, Gorm to build server-side programs, understand context, mutex, http and other common packages.",
-      "Possess certain frontend development capabilities, can use Vue.js framework, Vite and other tools to build frontend projects, understand Nuxt.js SSR framework, can read and modify frontend code, generate beautiful styles with AI."
+      "Proficient in Python with hands-on experience in LLM applications, RAG, browser automation, and agent systems; familiar with FastAPI/Flask, Langfuse, and MLflow for AI application development and evaluation.",
+      "Familiar with Java/Spring Boot and Go/Gin; proficient in TypeScript, React, Vue/Nuxt, TanStack, and Vite, with end-to-end integration and AI product prototyping experience.",
+      "Experienced with Git, Docker, CI/CD, and Nginx, including API design, performance optimization, and audit logging."
     ],
     "others": [
-      "Understand common open-source contribution methods, proficient in using git, master code collaboration and commit conventions, GitHub star 50+.",
-      "Skilled in setting up personal blogs and writing technical research documentation."
+      "Experienced in requirements clarification, solution reviews, cross-functional meetings, and project delivery with business, product, and engineering teams.",
+      "CET-6 and IELTS 6.5; able to read English technical documentation and communicate in technical contexts."
     ]
   }
 }
